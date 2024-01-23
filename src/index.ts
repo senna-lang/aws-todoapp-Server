@@ -18,7 +18,7 @@ app.get('/allTodos', async (req: Request, res: Response) => {
   return res.json(allTodos);
 });
 
-app.post('/createTodos', async (req: Request, res: Response) => {
+app.post('/createTodo', async (req: Request, res: Response) => {
   const { title, isCompleted } = req.body;
   const createTodos = await prisma.todo.create({
     data: {
@@ -29,7 +29,7 @@ app.post('/createTodos', async (req: Request, res: Response) => {
   return res.json(createTodos);
 });
 
-app.put('/editTodos/:id', async (req: Request, res: Response) => {
+app.put('/editTodo/:id', async (req: Request, res: Response) => {
   const { title, isCompleted } = req.body;
   const id = Number(req.params.id);
   const editTodo = await prisma.todo.update({
@@ -42,7 +42,7 @@ app.put('/editTodos/:id', async (req: Request, res: Response) => {
   return res.json(editTodo);
 });
 
-app.delete('/deleteTodos/:id', async (req: Request, res: Response) => {
+app.delete('/deleteTodo/:id', async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const deleteTodo = await prisma.todo.delete({
     where: { id },
